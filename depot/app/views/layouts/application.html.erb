@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Магазин всякой фигни</title>
+<%= stylesheet_link_tag "application", media: "all",
+"data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tag %>
+</head>
+<body class="<%= controller.controller_name %>">
+<div id="banner">
+<%= image_tag("Sano.png") %>
+<%= @page_title || "Магазин всякой фигни" %>
+</div>
+<div id="columns">
+<div id="side">
+<% if @cart %>
+<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+<%= render @cart %>
+<% end %>
+ <% end %>
+<div id="cart">
+</div>
+<ul>
+<li><a href="http://localhost:3000">Главная</a></li>
+<li><a href="http://localhost:3000/products">Продукты</a></li>
+<li><a href="http://localhost:3000/users">Пользователи</a></li>
+<li><a href="http://localhost:3000/admin">Администратор</a></li>
+</ul>
+<% if session[:user_id] %>
+<ul>
+<li><%= link_to 'Заказы', orders_path %></li>
+<li><%= link_to 'Пользователи', users_path %></li>
+</ul>
+<%= button_to 'Выход', logout_path, method: :delete %>
+<% end %>
+</div>
+<div id="main">
+<%= yield %>
+</div>
+</div>
+</body>
+</html>

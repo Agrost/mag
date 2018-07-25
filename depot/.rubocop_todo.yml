@@ -1,0 +1,26 @@
+Lint/AssignmentInCondition:
+  Exclude:
+    - 'bin/spring'
+
+Lint/HandleExceptions:
+  Exclude:
+    - 'bin/rails'
+    - 'bin/rake'
+
+Metrics/AbcSize:
+  Max: 23
+
+Metrics/BlockLength:
+  Max: 37
+
+Metrics/MethodLength:
+  Max: 14
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 132
